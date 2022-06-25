@@ -1,73 +1,33 @@
 const router = require('express').Router();
-const { Blog } = require('../models/');
+// const { Blog } = require('../models/');
 
 
 //ADD IN MODELS REQUIRE HERE!!!!!!!!
 
 // GET all galleries for homepage
+
+const blogData = [
+  {
+      title: "MVC initials",
+      contents: "It stands for Model View Controller",
+      user_name: "Smithyxx"
+  },
+  {
+      title: "Favoutite DB package",
+      contents: "I always use MySQL",
+      user_name: "SqlFiend"
+  },
+  {
+      title: "Confused",
+      contents: "What is peoples first step for setting up Express?",
+      user_name: "Roger"
+  },
+];
+
 router.get('/', async (req, res) => {
-  try {
-    const dbGalleryData = await Blog.findAll({
-      include: [
-        {
-          model: Painting,
-          attributes: ['filename', 'description'],
-        },
-      ],
-    });
-
-    const galleries = dbGalleryData.map((gallery) =>
-      gallery.get({ plain: true })
-    );
-
-    res.render('homepage', {
-      galleries,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// GET one gallery
-router.get('/gallery/:id', async (req, res) => {
-  try {
-    const dbGalleryData = await Gallery.findByPk(req.params.id, {
-      include: [
-        {
-          model: Painting,
-          attributes: [
-            'id',
-            'title',
-            'artist',
-            'exhibition_date',
-            'filename',
-            'description',
-          ],
-        },
-      ],
-    });
-
-    const gallery = dbGalleryData.get({ plain: true });
-    res.render('gallery', { gallery });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-// GET one painting
-router.get('/painting/:id', async (req, res) => {
-  try {
-    const dbPaintingData = await Painting.findByPk(req.params.id);
-
-    const painting = dbPaintingData.get({ plain: true });
-
-    res.render('painting', { painting });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+  res.render('first', {blogData});
 });
 
 module.exports = router;
+
+
