@@ -4,7 +4,6 @@ const router = require('express').Router();
 
 //ADD IN MODELS REQUIRE HERE!!!!!!!!
 
-// GET all galleries for homepage
 
 const blogData = [
   {
@@ -26,6 +25,10 @@ const blogData = [
 
 router.get('/', async (req, res) => {
   res.render('first', {blogData});
+});
+
+router.get('/signin', async (req, res) => {
+  res.render('signin');
 });
 
 module.exports = router;
