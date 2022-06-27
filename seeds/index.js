@@ -8,7 +8,11 @@ const seedAll = async () => {
 
   await seedBlogs();
 
+  console.log("--------BLOGS SEEDED--------")
+
   await seedUsers();
+
+  console.log("--------USERS SEEDED--------")
 
 
   process.exit(0);

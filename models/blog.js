@@ -20,7 +20,7 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    User_name: {
+    user_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -1,6 +1,6 @@
-{{#each blogData as |blog|}}
+{{#each blogs as |blog|}}
 <div class="card">
-    <h5 class="card-header">{{blog.title}}</h5>
+    <h5 class="card-header">{{blog.title}} {{createdAt}}</h5>
     <div class="card-body">
       <h5 class="card-title">{{blog.user_name}}</h5>
       <p class="card-text">{{blog.contents}}</p>

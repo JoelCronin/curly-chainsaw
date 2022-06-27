@@ -1,4 +1,4 @@
-const { Blog } = require('../models/blog.js');
+const Blog  = require('../models/blog.js');
 
 const blogData = [
     {

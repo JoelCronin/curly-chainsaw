@@ -1,4 +1,4 @@
-const { User } = require('../models/user');
+const User  = require('../models/user');
 
 const userData = [
     {
@@ -7,12 +7,12 @@ const userData = [
         password: "BASS1234"
     },
     {
-        title: "SqlFiend",
+        user_name: "SqlFiend",
         email: "sqlfriend@aol.com",
         password: "TREBLE123"
     },
     {
-        title: "Roger",
+        user_name: "Roger",
         email: "rog12@google.com",
         password: "SOLO1234"
     },
