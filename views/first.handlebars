@@ -1,10 +1,13 @@
-{{#each blogs as |blog|}}
+
 <div class="card">
+  {{#each blogs as |blog|}}
+  <a class="card" href="/blog/{{blog.id}}" >
     <h5 class="card-header">{{blog.title}} {{createdAt}}</h5>
     <div class="card-body">
       <h5 class="card-title">{{blog.user_name}}</h5>
       <p class="card-text">{{blog.contents}}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
     </div>
-  </div>
-{{/each}}
+  </a>
+  {{/each}}
+</div>

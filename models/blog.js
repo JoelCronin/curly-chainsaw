@@ -18,18 +18,21 @@ Blog.init(
     },
     contents: {
       type: DataTypes.STRING,
-      allowNull: true,
-    },
-    user_name: {
-      type: DataTypes.STRING,
       allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id'
+    },
     },
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Blog',
+    modelName: 'blog',
   }
 );
 
