@@ -20,14 +20,6 @@ router.get('/', async (req, res) => {
       res.render('first', { blogs, loggedIn: req.session.loggedIn });
     });
 
-    // route to get all blogs on homepage
-// router.get('/signin', async (req, res) => {
-//   const blogData = await Blog.findAll().catch((err) => { 
-//       res.json(err);
-//     });
-//       const blogs = blogData.map((blog) => blog.get({ plain: true }));
-//       res.render('signin', { blogs, loggedIn: req.session.loggedIn });
-//     });
 
 
 router.get('/signin', async (req, res) => {
@@ -49,14 +41,23 @@ router.get('/blog/:id', async (req, res) => {
             'createdAt',
           ],
         },
+        {
+          model: User,
+          atrributes: [
+            'user_name',
+            'id',
+          ]
+        }
       ],
     }
     );
 
     const blog = dbBlogData.get({ plain: true });
     console.log("=====================================================================")
-    console.log(blog)
-    console.log(blog.comments)
+    // console.log(blog)
+    // console.log(blog.comments)
+    console.log(blog.user)
+    console.log(blog.user.user_name)
     const comments = blog.comments
     res.render('singleblog', { blog, comments, loggedIn: req.session.loggedIn });
   } catch (err) {
@@ -122,6 +123,37 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// Logout
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+router.post('/comment', async (req, res) => {
+  try {
+      console.log(req.session.userId);
+      
+      const newCommentData = await Comment.create({
+      comment: req.body.comment,
+      user_id: req.session.user_id,
+      blog_id: req.body.blog_id,
+      
+      });
+      
+      res.render('singleblog')
+  } catch (err) {
+      console.log(err);
+      res.status(400).json(err);
+  }
+  });
+
+
 
 
 

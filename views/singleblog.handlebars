@@ -1,24 +1,32 @@
 <div class="card">
     <h5 class="card-header">{{blog.title}} {{createdAt}}</h5>
     <div class="card-body">
-      <h5 class="card-title">{{blog.user_name}}</h5>
+      <h5 class="card-title">{{blog.user.user_name}}</h5>
       <p class="card-text">{{blog.contents}}</p>
-  <div class="form-outline mb-4">
-    <input type="text" id="form2Example2" class="form-control" />
-    <label class="form-label" for="form2Example2">Leave a comment</label>
+{{#if loggedIn}}
+<form id="commentBar">
+  <div class="form-group">
+    <label for="commentBar">Leave a Comment</label>
+    <input type="text" class="form-control" id="commentText" placeholder="Comment">
   </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{/if}}
   </div>
   </div>
 
   <div class="card">
     <h5 class="card-header">Comments</h5>
     <div class="card-body">
-
+      {{#each blog.user.user_name as |username|}}
+      <p>{{username}} cc</p>
+      {{/each}}
       {{#each comments as |comment|}}
       <ul>
-        <li>'{{comment.comment}}' on {{comment.createdAt}} </li>
+        <li> said: '{{comment.comment}}' on {{comment.createdAt}} </li>
       </ul>
       {{/each}}
       
+    </div>
   </div>
-  </div>
+  <script src="/js/comments.js"></script>
