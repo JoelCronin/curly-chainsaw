@@ -1,0 +1,31 @@
+<div class="card">
+  {{#each allUsersBlogs as |blog|}}
+  <a class="card" href="/blog/{{blog.id}}" >
+    <h5 class="card-header">{{blog.title}} {{createdAt}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{blog.user_name}}</h5>
+      <p class="card-text">{{blog.contents}}</p>
+      {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+    </div>
+  </a>
+  {{/each}}
+</div>
+
+<div> YOUR PREVIOUS BLOGS</div>
+
+<div>
+<form id="BlogBar">
+  <div class="form-group">
+    <h3>Add a new Blog</h3>
+    <label for="commentBar">Blog Title</label>
+    <input type="text" class="form-control" id="blogTitle" placeholder="Title">
+  </div>
+    <div class="form-group">
+    <label for="commentBar">Blog Content</label>
+    <input type="text" class="form-control" id="blogText" placeholder="Content">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<script src="/js/newBlog.js"></script>

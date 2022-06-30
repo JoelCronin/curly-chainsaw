@@ -93,6 +93,7 @@ router.post('/signin', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.user_id = dbUserData.id;
 
       res
         .status(200)
@@ -114,6 +115,7 @@ router.post('/', async (req, res) => {
     });
 
     req.session.save(() => {
+      req.session.user_id = dbUserData.id;
       req.session.loggedIn = true;
 
       res.status(200).json(dbUserData);
@@ -153,7 +155,40 @@ router.post('/comment', async (req, res) => {
   }
   });
 
+  router.get('/dashboard', async (req, res) => {
+    try {
+    const allUserBlogData = await Blog.findAll({
+        where:{
+            user_id: req.session.user_id,
+        },
+    });
+    
+    const allUsersBlogs = allUserBlogData.map((post) => post.get({ plain: true }));
+    
+    res.render('dashboard', {
+        allUsersBlogs,
+        loggedIn: req.session.loggedIn
+    })
+    } catch (err) {
+    res.status(500).json(err);
+    }
+});
 
+router.post('/newBlog', async (req, res) => {
+  try {
+      
+      const newBlogData = await Blog.create({
+      title: req.body.title,
+      contents: req.body.contents,
+      user_id: req.session.user_id,
+      });
+      
+      res.render('dashboard')
+  } catch (err) {
+      console.log(err);
+      res.status(400).json(err);
+  }
+  });
 
 
 

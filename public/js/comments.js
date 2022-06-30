@@ -14,7 +14,7 @@ async function newComment(event) {
         'Content-Type': 'application/json',
       },
     });
-    //if the dish is added, the 'all' template will be rerendered
+    //if the comment is added, the 'singleblog' template will be rerendered
     if (response.ok) {
       document.location.reload();
     } else {
