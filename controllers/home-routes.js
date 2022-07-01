@@ -190,6 +190,71 @@ router.post('/newBlog', async (req, res) => {
   }
   });
 
+  // Render Update
+router.get('/update/:id', async (req, res) => {
+  try {
+    const dbBlogData = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+          attributes: [
+            'id',
+            'comment',
+            'user_id',
+            'blog_id',
+            'createdAt',
+          ],
+        },
+        {
+          model: User,
+          atrributes: [
+            'user_name',
+            'id',
+          ]
+        }
+      ],
+    }
+    );
+
+    const blog = dbBlogData.get({ plain: true });
+    console.log("=====================================================================")
+    const comments = blog.comments
+    res.render('update', { blog, comments, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// DELETE POST
+router.delete('/update/:id', async (req, res) => {
+  try {
+    const deletePost = await Blog.destroy({where: { id: req.params.id }})
+    res.status(200).json(deletePost)
+
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
+
+//Edit Blog
+router.put('/update/:id', async (req, res) => {
+  try {
+    const editPostData = await Blog.update({ 
+      title: req.body.title,
+      contents: req.body.contents,
+      user_id: req.session.user_id,
+    },
+    {
+      where: {id: req.params.id },
+    });
+    res.status(200).json('post updated')
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
 
 
 module.exports = router;

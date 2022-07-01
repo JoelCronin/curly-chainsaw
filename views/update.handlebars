@@ -1,0 +1,33 @@
+<div class="card">
+    <h5 class="card-header">Blog Title: {{blog.title}}</h5>
+    <div class="card-body">
+      <h5 class="card-title"> User: {{blog.user.user_name}}</h5>
+      <p class="card-text"> Contents: {{blog.contents}}</p>
+<form id="deleteBar">
+  <div class="form-group">
+  </div>
+  <button type="submit" id={{blog.id}} class="btn btn-primary deleteButton">Delete</button>
+</form>
+<br>
+
+<br>
+<div>
+<form id="BlogUpdate">
+  <div class="form-group">
+    <h3>Update this Blog</h3>
+    <label for="commentBar"> New Blog Title</label>
+    <input type="text" class="form-control" id="blogTitle" placeholder="Title">
+  </div>
+    <div class="form-group">
+    <label for="commentBar"> New Blog Content</label>
+    <input type="text" class="form-control" id="blogText" placeholder="Content">
+  </div>
+  <button type="submit" class="btn btn-primary d-flex justify-content-center center">Submit</button>
+</form>
+</div>
+<br>
+
+
+
+
+  <script src="/js/update.js"></script>

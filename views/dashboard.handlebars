@@ -1,18 +1,21 @@
+<br>
+<h3> YOUR PREVIOUS BLOGS:</h3>
+
 <div class="card">
   {{#each allUsersBlogs as |blog|}}
-  <a class="card" href="/blog/{{blog.id}}" >
-    <h5 class="card-header">{{blog.title}} {{createdAt}}</h5>
+  <a class="card" href="/update/{{blog.id}}" >
+    <h5 class="card-header">{{blog.title}} </h5>
     <div class="card-body">
       <h5 class="card-title">{{blog.user_name}}</h5>
       <p class="card-text">{{blog.contents}}</p>
+      <p>{{ format_date createdAt}}</p>
       {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
     </div>
   </a>
   {{/each}}
 </div>
 
-<div> YOUR PREVIOUS BLOGS</div>
-
+<br>
 <div>
 <form id="BlogBar">
   <div class="form-group">
@@ -24,8 +27,9 @@
     <label for="commentBar">Blog Content</label>
     <input type="text" class="form-control" id="blogText" placeholder="Content">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary d-flex justify-content-center center">Submit</button>
 </form>
 </div>
+<br>
 
 <script src="/js/newBlog.js"></script>

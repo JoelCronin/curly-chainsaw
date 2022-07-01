@@ -1,4 +1,23 @@
-#mainHeader {
- text-align: center;
+
+.navbar {
+background-color: red;
+
 }
+
+* {
+    /* background-color: rgb(236, 234, 234); */
+    padding: 0;
+    margin: 0;
+    color: black;
+    text-decoration: none;
+}
+
+h1{
+    text-decoration: underline;
+}
+
+h3{
+    text-decoration: underline;
+}
+
 

@@ -1,8 +1,9 @@
 <div class="card">
-    <h5 class="card-header">{{blog.title}} {{createdAt}}</h5>
+    <h5 class="card-header">{{blog.title}}</h5>
     <div class="card-body">
-      <h5 class="card-title">{{blog.user.user_name}}</h5>
+      
       <p class="card-text">{{blog.contents}}</p>
+      <h5 class="card-title"> Left by: {{blog.user.user_name}}</h5>
 {{#if loggedIn}}
 <form id="commentBar">
   <div class="form-group">
@@ -18,12 +19,9 @@
   <div class="card">
     <h5 class="card-header">Comments</h5>
     <div class="card-body">
-      {{#each blog.user.user_name as |username|}}
-      <p>{{username}} cc</p>
-      {{/each}}
       {{#each comments as |comment|}}
       <ul>
-        <li> said: '{{comment.comment}}' on {{comment.createdAt}} </li>
+        <li>'{{comment.comment}}' on {{ format_date comment.createdAt}} </li>
       </ul>
       {{/each}}
       
