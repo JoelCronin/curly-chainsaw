@@ -1,31 +1,36 @@
-<div class="card">
-    <h5 class="card-header">Blog Title: {{blog.title}}</h5>
+
+<div class="update-container">
+  <div class="display-blog">
+    <h5 class="card-header"> {{blog.title}}</h5>
     <div class="card-body">
-      <h5 class="card-title"> User: {{blog.user.user_name}}</h5>
-      <p class="card-text"> Contents: {{blog.contents}}</p>
-<form id="deleteBar">
-  <div class="form-group">
+      
+      <p class="card-text"> {{blog.contents}}</p> <br>
+      <h5 class="card-title"> Posted by: {{blog.user.user_name}}</h5>
+    </div>
+    <form id="deleteBar">
+  <div class="form-delete">
   </div>
-  <button type="submit" id={{blog.id}} class="btn btn-primary deleteButton">Delete</button>
+  <button type="submit" id={{blog.id}} class="btn">Delete This Blog</button>
 </form>
+  </div>
+
+
 <br>
 
 <br>
-<div>
+<div class="update">
 <form id="BlogUpdate">
   <div class="form-group">
     <h3>Update this Blog</h3>
-    <label for="commentBar"> New Blog Title</label>
-    <input type="text" class="form-control" id="blogTitle" placeholder="Title">
+    <input type="text" class="form-control" id="blogTitle" placeholder="New Blog Title">
   </div>
     <div class="form-group">
-    <label for="commentBar"> New Blog Content</label>
-    <input type="text" class="form-control" id="blogText" placeholder="Content">
+    <textarea type="text" class="form-control" id="blogText" placeholder="New Blog Content"></textarea>
   </div>
   <button type="submit" class="btn btn-primary d-flex justify-content-center center">Submit</button>
 </form>
 </div>
-<br>
+</div>
 
 
 

@@ -1,35 +1,33 @@
-<br>
-<h3> YOUR PREVIOUS BLOGS:</h3>
+<div class="dashboard-container">
+  <h3 class="dashboard-title"> YOUR PREVIOUS BLOGS:</h3>
 
-<div class="card">
   {{#each allUsersBlogs as |blog|}}
-  <a class="card" href="/update/{{blog.id}}" >
+  <div class="dashboard-blog">
+  <a class="dashboard-link" href="/update/{{blog.id}}" >
     <h5 class="card-header">{{blog.title}} </h5>
     <div class="card-body">
       <h5 class="card-title">{{blog.user_name}}</h5>
       <p class="card-text">{{blog.contents}}</p>
-      <p>{{ format_date createdAt}}</p>
+      <p> Posted on: {{ format_date createdAt}}</p>
       {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
     </div>
   </a>
+  </div>
   {{/each}}
-</div>
+
 
 <br>
-<div>
+<div class="add-blog">
 <form id="BlogBar">
   <div class="form-group">
     <h3>Add a new Blog</h3>
-    <label for="commentBar">Blog Title</label>
-    <input type="text" class="form-control" id="blogTitle" placeholder="Title">
+    <input type="text" class="form-control" id="blogTitle" placeholder="Blog Title">
   </div>
     <div class="form-group">
-    <label for="commentBar">Blog Content</label>
-    <input type="text" class="form-control" id="blogText" placeholder="Content">
+    <textarea type="text" class="form-control" id="blogText" placeholder="Blog Content"></textarea>
   </div>
   <button type="submit" class="btn btn-primary d-flex justify-content-center center">Submit</button>
 </form>
 </div>
-<br>
-
+</div>
 <script src="/js/newBlog.js"></script>
